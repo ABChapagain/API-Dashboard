@@ -42,8 +42,8 @@ function Root() {
         <div className='flex flex-col w-full gap-5 justify-start items-start'>
             <h2 className='text sm:text-3xl text-xl font-bold'>Physical Products</h2>
             <p className='tet sm:text-2xl text-xl'>Add, Remove or Edit Physical Products from here</p>
-            <Addproduct />
-            {(!loading) && <div className="productList " >
+            {(!error) && <Addproduct />}
+            {(!loading && !error) && <div className="productList " >
                 <div className="proinfo flex justify-between items-center">
                     <h2 className='text sm:text-2xl text-xl py-5 '>Your Products</h2>
                     <input type="text" className='input p-2 text-white' id='search' onChange={(e) => search(e.target)} placeholder='Search' />
@@ -72,7 +72,8 @@ function Root() {
                                             <div className="flex items-center space-x-3">
                                                 <div className="avatar">
                                                     <div className="mask mask-squircle w-12 h-12">
-                                                        <img src={item.variant.productImage} alt="" />
+                                                        {(item.variant.productImage) && <img src={item.variant.productImage} alt="" />}
+                                                        {(item.productImageGallery.length > 0) && <img src={item.productImageGallery[0]} alt="" />}
                                                     </div>
                                                 </div>
                                             </div>

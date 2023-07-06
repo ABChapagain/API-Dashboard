@@ -116,14 +116,15 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
-.serviceList a {
+.serviceList p {
   text-decoration: none;
   color: white;
   padding: 10px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
-.serviceList a {
+.serviceList p {
   display: flex;
   gap: 10px;
   align-items: center;
@@ -143,4 +144,35 @@ body {
   width: 100%;
   border-collapse: collapse;
   overflow-x: scroll;
+}
+
+.card-image {
+  position: relative;
+  height: 230px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+}
+
+.ci-thumb {
+  z-index: 5;
+  position: relative;
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+}
+
+.absImage {
+  filter: blur(3px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 230px;
+  width: 100%;
+  z-index: 1;
+  justify-content: center;
+  object-fit: cover;
+  opacity: 0.8;
 }

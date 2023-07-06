@@ -41,8 +41,8 @@ function Root() {
         <div className='flex flex-col w-full gap-5 justify-start items-start'>
             <h2 className='text sm:text-3xl text-xl font-bold'>Services</h2>
             <p className='tet sm:text-2xl text-xl'>Add, Remove or Edit Services from here</p>
-            <Addproduct />
-            {(!loading) && <div className="productList " >
+            {(!loading && !error) && <Addproduct />}
+            {(!loading && !error) && <div className="productList " >
                 <div className="proinfo flex justify-between items-center">
                     <h2 className='text sm:text-2xl text-xl py-5 '>Your Services</h2>
                     <input type="text" className='input p-2' id='search' onChange={(e) => search(e.target)} placeholder='Search' />

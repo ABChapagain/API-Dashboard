@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import Advertisement from '../../components/advertisement/Home'
+import CategoryHome from '../components/Category/CategoryHome'
 
-function index() {
+function category() {
     var [isAdmin, setIsAdmin] = React.useState(false)
     var [loading, setLoading] = React.useState(true)
     useEffect(() => {
@@ -25,7 +25,7 @@ function index() {
     }
     return (
         <div>
-            {(isAdmin && !loading) && <Advertisement />}
+            {(isAdmin && !loading) && <CategoryHome />}
             {(!isAdmin && !loading) && <h1>
                 You do not have permission to access this page. Ask Admins for more information.
             </h1>}
@@ -33,4 +33,4 @@ function index() {
     )
 }
 
-export default index
+export default category

@@ -7,11 +7,31 @@ function product() {
   var router = useRouter()
   var [loading, setLoading] = useState(true)
   var [type, setType] = useState('')
+  var [isAdmin, setIsAdmin] = React.useState(false)
+  useEffect(() => {
+    checkData()
+  }, [])
+
+  function checkData() {
+    fetch("/api/user/checkAdmin")
+      .then(res => res.json())
+      .then(data => {
+        setLoading(false)
+        if (data.isadmin === true) {
+          setIsAdmin(true);
+        } else {
+          setIsAdmin(false);
+        }
+      }
+      )
+      .catch(err => console.log(err))
+
+  }
+
   useEffect(() => {
     var type = router.query.type
     if (!!type) {
       setType(type)
-      setLoading(false)
       if (type !== 'service' && type !== 'physical') {
         router.push('/product')
       }
@@ -22,8 +42,11 @@ function product() {
   return (
     <div className='sm:p-4 p-1'>
       {(loading) && <div>Loading...</div>}
-      {(!loading && type === 'service') && <Rootservice />}
-      {(!loading && type === 'physical') && <Root />}
+      {(!loading && type === 'service' && isAdmin) && <Rootservice />}
+      {(!loading && type === 'physical' && isAdmin) && <Root />}
+      {(!loading && !isAdmin) && <h1>
+        You do not have permission to access this page. Ask Admins for more information.
+      </h1>}
     </div>
   )
 }
