@@ -10,10 +10,8 @@ export const authOptions = {
             clientId: process.env.NEXT_PUBLIC_GOOGLE_ID,
             clientSecret: process.env.NEXT_PUBLIC_GOOGLE_SECRET,
         }),
-        // ...add more providers here
     ],
-
-
+    callbackUrl: '/auth',
 }
 
 export default NextAuth(authOptions)
