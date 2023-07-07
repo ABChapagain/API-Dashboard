@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Addproduct from './Addproduct'
+import SkelLoad from '../../Category/SkelLoad'
 
 function Root() {
     var [product, setProduct] = useState([])
@@ -37,6 +38,11 @@ function Root() {
             getallproduct()
         }
 
+    }
+    if (loading) {
+        return (
+            <SkelLoad />
+        )
     }
     return (
         <div className='flex flex-col w-full gap-5 justify-start items-start'>

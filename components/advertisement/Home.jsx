@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Addadvertisement from './Addadvertisement'
+import SkelLoad from '../Category/SkelLoad'
 
 function Advertisement() {
     var [ads, setAds] = useState([])
@@ -37,6 +38,12 @@ function Advertisement() {
             getallads()
         }
 
+    }
+
+    if (loading) {
+        return (
+            <SkelLoad />
+        )
     }
     return (
         <div className='flex flex-col w-full gap-5 justify-start items-start'>

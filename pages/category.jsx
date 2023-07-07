@@ -29,6 +29,7 @@ function category() {
             {(!isAdmin && !loading) && <h1>
                 You do not have permission to access this page. Ask Admins for more information.
             </h1>}
+            {loading && <h1>Loading...</h1>}
         </div>
     )
 }
